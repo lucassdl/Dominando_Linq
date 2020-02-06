@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Loja.Infra.EF.Repositorio
@@ -40,9 +41,35 @@ namespace Loja.Infra.EF.Repositorio
             }
         }
 
+        public void ExcluirCategoria(int id)
+        {
+            _ctx = new LojaEFEntities();
+
+            try
+            {
+                var categoria = _ctx.Categoria.Find(id);
+                _ctx.Categoria.Remove(categoria);
+
+                _ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao excluir Categoria.");
+            }
+        }
+
+        public List<Produto> ListarProduto()
+        {
+            _ctx = new LojaEFEntities();
+
+            return _ctx.Produto.ToList();
+        }
+
         public void Dispose()
         {
             _ctx.Dispose();
         }
+
+        
     }
 }

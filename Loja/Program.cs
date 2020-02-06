@@ -141,10 +141,22 @@ namespace Loja
             //Salvando Categorias com Entity Framework
             //new Infra.EF.Repositorio.RepositorioDeCategoria().AdicionarCategoria("Frutas");
             //new Infra.EF.Repositorio.RepositorioDeCategoria().AdicionarCategoria("Eletronicos");
+            //new Infra.EF.Repositorio.RepositorioDeCategoria().ExcluirCategoria(6);
 
             //Salvando Categorias com LINQ
             //new Infra.Linq.Repositorio.RepositorioDeCategoria().AdicionarCategoria("Vestuários");
             //new Infra.Linq.Repositorio.RepositorioDeCategoria().AdicionarCategoria("Alimentos");
+            //new Infra.Linq.Repositorio.RepositorioDeCategoria().ExcluirCategoria(5);
+
+            Console.WriteLine("--------------- Entity Framework ---------------");
+            var produtosEF = new Infra.EF.Repositorio.RepositorioDeCategoria().ListarProduto();
+            produtosEF.ToList().ForEach(p => Console.WriteLine(p.NomeCategoria));
+
+            Console.WriteLine("--------------- Linq To SQL ---------------");
+            var produtosLinq = new Infra.EF.Repositorio.RepositorioDeCategoria().ListarProduto();
+            produtosLinq.ToList().ForEach(p => Console.WriteLine(p.NomeCategoria));
+
+
 
             //try
             //{
